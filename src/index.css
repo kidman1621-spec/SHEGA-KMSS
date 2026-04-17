@@ -1,0 +1,101 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@theme {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+  /* Default Dark (Night) Mode */
+  --color-bg-deep: var(--bg-deep);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-border-dim: var(--border-dim);
+  
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  
+  --color-accent-blue: #2F81F7;
+  --color-accent-green: #3FB950;
+  --color-accent-orange: #D29922;
+
+  --color-brand-primary: #D29922;
+}
+
+@layer base {
+  :root {
+    /* Night Mode (High Contrast Bloomberg) */
+    --bg-deep: #0A0B0E;
+    --bg-surface: #14161B;
+    --bg-elevated: #1E2228;
+    --border-dim: #2D333B;
+    --text-primary: #E6EDF3;
+    --text-secondary: #848D97;
+    color-scheme: dark;
+  }
+
+  :root.light {
+    /* Light Mode (Swiss Professional Style) */
+    --bg-deep: #FFFFFF;
+    --bg-surface: #F8F9FA;
+    --bg-elevated: #F1F3F5;
+    --border-dim: #E9ECEF;
+    --text-primary: #1E293B;
+    --text-secondary: #64748B;
+    color-scheme: light;
+  }
+
+  body {
+    @apply font-sans antialiased bg-bg-deep text-text-primary transition-all duration-200 ease-in-out;
+    font-size: 13px;
+  }
+}
+
+@layer components {
+  .high-density-panel {
+    @apply bg-bg-surface border border-border-dim rounded shadow-sm hover:shadow-md transition-all duration-200;
+  }
+
+  .panel-header {
+    @apply px-4 py-3 border-b border-border-dim flex justify-between items-center bg-bg-surface;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .high-density-table {
+    @apply w-full border-collapse text-[12px];
+  }
+
+  .high-density-table th {
+    @apply text-left px-4 py-2 text-text-secondary border-b border-border-dim font-normal text-[11px];
+  }
+
+  .high-density-table td {
+    @apply px-4 py-2.5 border-b border-border-dim;
+  }
+
+  .stat-card-hd {
+    @apply bg-bg-surface border border-border-dim p-4 rounded flex flex-col gap-1 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200;
+  }
+
+  .stat-label-hd {
+    @apply text-[11px] text-text-secondary uppercase tracking-wider;
+  }
+
+  .stat-val-hd {
+    @apply font-mono text-2xl text-text-primary my-1;
+  }
+
+  .nav-item-hd {
+    @apply flex items-center gap-2.5 py-1.5 text-text-secondary hover:text-text-primary cursor-pointer transition-colors text-[13px];
+  }
+
+  .nav-item-hd.active {
+    @apply text-text-primary font-semibold;
+  }
+
+  .rbac-tag-hd {
+    @apply text-[9px] px-1 py-0.5 rounded font-bold uppercase;
+  }
+}
+
+
